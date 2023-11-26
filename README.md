@@ -1,6 +1,6 @@
 # Installation_Scripts
 Made tedious task to easy using this installations script
-## Docker Scripts
+## Docker Script
 ```
 #!/bin/bash
 sudo apt-get update
@@ -13,7 +13,7 @@ docker ps
 sudo systemctl enable docker
 ```
 
-## Jenkins Scripts
+## Jenkins Script
 
 ```
 #!/bin/bash
@@ -35,7 +35,7 @@ sudo systemctl start jenkins
 sudo systemctl status jenkins
 ```
 
-## Trivy Scripts
+## Trivy Script
 
 ```
 sudo apt-get install wget apt-transport-https gnupg lsb-release -y
@@ -43,4 +43,16 @@ wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | gpg --dear
 echo "deb [signed-by=/usr/share/keyrings/trivy.gpg] https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main" | sudo tee -a /etc/apt/sources.list.d/trivy.list
 sudo apt-get update
 sudo apt-get install trivy
+```
+
+## Nginx Script
+
+```
+#!/bin/bash
+sudo apt update
+sudo apt upgrade
+sudo apt install nginx -y
+sudo systemctl start nginx
+sudo systemctl enable nginx
+sudo systemctl status nginx
 ```

@@ -35,9 +35,10 @@ sudo systemctl start jenkins
 sudo systemctl status jenkins
 ```
 
-## Trivy Script
+## Trivy Install using script
 
 ```
+#!/bin/bash
 sudo apt-get install wget apt-transport-https gnupg lsb-release -y
 wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | gpg --dearmor | sudo tee /usr/share/keyrings/trivy.gpg > /dev/null
 echo "deb [signed-by=/usr/share/keyrings/trivy.gpg] https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main" | sudo tee -a /etc/apt/sources.list.d/trivy.list
@@ -57,7 +58,7 @@ sudo systemctl enable nginx
 sudo systemctl status nginx
 ```
 
-## SonarQube
+## SonarQube 
 ```
 docker run -d   --name sonar -p 9000:9000 sonarqube:lts-community
 ```
@@ -136,4 +137,27 @@ pipeline {
         }
     }
 }
+```
+
+## Kubectl Install
+
+```
+#!/bin/bash
+#finally install kubectl
+sudo curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.23.6/bin/linux/amd64/kubectl
+sudo chmod +x ./kubectl
+sudo mkdir -p $HOME/bin && sudo cp ./kubectl $HOME/bin/kubectl && export PATH=$PATH:$HOME/bin
+
+```
+
+## Terraform Install
+
+```
+#!/bib/bash
+
+#then install terraform
+sudo yum install -y yum-utils
+sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
+sudo yum -y install terraform
+
 ```

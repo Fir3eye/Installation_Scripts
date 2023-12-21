@@ -1,5 +1,6 @@
 #!/bin/bash
 sudo apt update -y
+sudo apt install docker.io
 sudo touch /etc/apt/keyrings/adoptium.asc
 sudo wget -O /etc/apt/keyrings/adoptium.asc https://packages.adoptium.net/artifactory/api/gpg/key/public
 echo "deb [signed-by=/etc/apt/keyrings/adoptium.asc] https://packages.adoptium.net/artifactory/deb $(awk -F= '/^VERSION_CODENAME/{print$2}' /etc/os-release) main" | sudo tee /etc/apt/sources.list.d/adoptium.list

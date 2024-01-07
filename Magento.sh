@@ -90,7 +90,7 @@ chmod -R 755 /var/www/magento2
 
 # Run Magento setup
 bin/magento setup:install \
-  --base-url=http://sudheer.fblivevideos.in \
+  --base-url=http://fir3eye.in \
   --db-host=localhost \
   --db-name=magentodb \
   --db-user=magentouser \

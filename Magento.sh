@@ -48,7 +48,7 @@ systemctl start elasticsearch
 systemctl enable elasticsearch
 
 # Configure Elasticsearch security features
-echo "xpack.security.enabled: false" >> /etc/elasticsearch/elasticsearch.yml
+sudo sed -i 's/^xpack.security.enabled: true/xpack.security.enabled: false/' /etc/elasticsearch/elasticsearch.yml
 systemctl restart elasticsearch.service
 
 # Verify Elasticsearch installation

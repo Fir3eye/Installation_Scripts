@@ -41,11 +41,13 @@ EXIT
 MYSQL_SCRIPT
 
 # Install and configure Elasticsearch
-wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | gpg --dearmor -o /usr/share/keyrings/elasticsearch-keyring.gpg
-echo "deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg] https://artifacts.elastic.co/packages/8.x/apt stable main" | tee /etc/apt/sources.list.d/elastic-8.x.list
-apt update && apt install elasticsearch -y
-systemctl start elasticsearch
-systemctl enable elasticsearch
+wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+sudo sh -c 'echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" > /etc/apt/sources.list.d/elastic-7.x.list'
+sudo apt-get update
+sudo apt-get install elasticsearch
+sudo systemctl enable elasticsearch
+sudo systemctl start elasticsearch
+
 
 # Configure Elasticsearch security features
 sudo sed -i 's/^xpack.security.enabled: true/xpack.security.enabled: false/' /etc/elasticsearch/elasticsearch.yml

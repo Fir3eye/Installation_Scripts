@@ -4,7 +4,7 @@
 sudo apt-get update
 
 # Install Docker
-sudo apt-get install docker.io
+sudo apt-get install docker.io -y
 
 # Download and install Minikube
 wget https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
